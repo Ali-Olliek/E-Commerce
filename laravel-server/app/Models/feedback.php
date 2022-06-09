@@ -10,7 +10,11 @@ class Feedback extends Model{
     use HasFactory;
 
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function items(){
+        return $this->belongsTo(Item::class);
     }
 
 }

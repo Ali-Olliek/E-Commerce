@@ -24,11 +24,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-
+    
+    /**Eloquent Model Relations */
     public function feedbacks(){
         return $this->hasMany(Feedback::class);
     }
-
 
     /**
      * The attributes that are mass assignable.
