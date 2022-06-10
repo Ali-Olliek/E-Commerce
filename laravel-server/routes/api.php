@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\JWTController; // Users Controller
+use App\Http\Controllers\UsersController; // Users Controller
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\ItemsController;
 
@@ -12,16 +12,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // User Routes
-// Users can Signup, Sign in, Sign out, refresh their JWT token, view profile, and write a feedback (Review and Like)
+// Users can Signup, Sign in, Sign out, refresh their Users token, view profile, and write a feedback (Review and Like)
 Route::group(['prefix'=>'v1'], function(){
     Route::group(['prefix'=>'User'], function(){
         Route::group(['middleware' => 'api'], function($router) {
-            Route::POST('/register', [JWTController::class, 'register']);
-            Route::POST('/login', [JWTController::class, 'login']);
-            Route::POST('/logout', [JWTController::class, 'logout']);
-            Route::POST('/refresh', [JWTController::class, 'refresh']);
-            Route::POST('/profile', [JWTController::class, 'profile']);
-            Route::POST('/feedback', [JWTController::class, 'feedback']);
+            Route::POST('/register', [UsersController::class, 'register']);
+            Route::POST('/login', [UsersController::class, 'login']);
+            Route::POST('/logout', [UsersController::class, 'logout']);
+            Route::POST('/refresh', [UsersController::class, 'refresh']);
+            Route::POST('/profile', [UsersController::class, 'profile']);
+            Route::POST('/feedback', [UsersController::class, 'feedback']);
         });
     });
     

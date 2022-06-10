@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class JWTController extends Controller
+class UsersController extends Controller
 {
     /**
      * Create a new AuthController instance.
