@@ -20,7 +20,6 @@ Route::group(['prefix'=>'v1'], function(){
             Route::POST('/login', [UsersController::class, 'log-in']);
             Route::POST('/logout', [UsersController::class, 'log-out']);
             Route::POST('/refresh', [UsersController::class, 'refresh']);
- 
         });
         Route::group(['middleware' => 'role.user'], function() {            
             Route::GET('/profile', [UsersController::class, 'profile']); 

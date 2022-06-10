@@ -12,6 +12,15 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
+    
+    /**Eloquent Model Relations */
+
+    // M:1 with Feedbacks
+    public function feedbacks(){
+        return $this->hasMany(Feedback::class);
+    }
+
+//--------------------------------------------//
 
     /**JWT Creation and Identification*/
     
@@ -25,10 +34,7 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
     
-    /**Eloquent Model Relations */
-    public function feedbacks(){
-        return $this->hasMany(Feedback::class);
-    }
+//--------------------------------------------//
 
     /**
      * The attributes that are mass assignable.
