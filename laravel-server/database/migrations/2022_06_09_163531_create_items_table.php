@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->char('name');
-            $table->longText('description')->NULL;
-            $table->longText('image')->NULL;
-            $table->integer('price')->NULL;
-            $table->char('location')->NULL;
-            $table->boolean('in_stock')->NULL;
-            $table->integer('stock_quantity')->NULL;
+            $table->longText('description')->unsigned();
+            $table->longText('image')->unsigned();
+            $table->integer('price')->unsigned();
+            $table->char('location')->unsigned();
+            $table->boolean('in_stock')->unsigned();
+            $table->integer('stock_quantity')->unsigned();
             $table->timestamps();
         });
     }
