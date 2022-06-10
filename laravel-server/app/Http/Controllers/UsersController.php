@@ -7,9 +7,10 @@ use Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Feedback;
 
-class UsersController extends Controller
-{
+class UsersController extends Controller {
+    
     /**
      * Create a new AuthController instance.
      *
@@ -120,10 +121,12 @@ class UsersController extends Controller
         ]);
     }
 
-    public function feedback(Request $request){
+    public function feedback(Request $request, $user_id, $item_id){
         $feedback = new feedback;
         $feedback ->review = $request-> description;
         $feedback ->favorite = $request->favorite;
+        $feedback ->user_id = $request ->user_id;
+        $feedback ->item_id = $request ->item_id;
         $feedback->save();
 
         return response()->json([

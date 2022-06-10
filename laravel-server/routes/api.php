@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsersController; // Users Controller
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\ItemsController;
 
@@ -17,11 +17,11 @@ Route::group(['prefix'=>'v1'], function(){
     Route::group(['prefix'=>'User'], function(){
         Route::group(['middleware' => 'api'], function($router) {
             Route::POST('/register', [UsersController::class, 'register']);
-            Route::POST('/login', [UsersController::class, 'log-in']);
-            Route::POST('/logout', [UsersController::class, 'log-out']);
+            Route::POST('/login', [UsersController::class, 'login'])->name("Log-in");
+            Route::POST('/logout', [UsersController::class, 'logout']);
             Route::POST('/refresh', [UsersController::class, 'refresh']);
         });
-        Route::group(['middleware' => 'role.user'], function() {            
+        Route::group(['middleware' => 'api'], function() {            
             Route::GET('/profile', [UsersController::class, 'profile']); 
             Route::POST('/feedback', [UsersController::class, 'feedback']);
         });

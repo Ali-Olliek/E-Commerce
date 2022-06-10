@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
-class AdminMiddleware
+class AdminMiddleware extends Middleware
 {
     /**
      * Handle an incoming request.
