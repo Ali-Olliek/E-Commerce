@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Feedback extends Model{
     
     use HasFactory;
+    
+    protected $table = 'feedbacks';
 
     //Inverse M:1 with Users
     public function users(){
