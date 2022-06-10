@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Auth;
 
-class UsersMiddleware extends Middleware
+class UsersMiddleware
 {
     /**
      * Handle an incoming request.
