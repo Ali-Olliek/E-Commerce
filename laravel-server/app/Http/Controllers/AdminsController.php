@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\User;
 use App\Models\Feedback;
 
+
 class AdminsController extends Controller
 {
     public function addItem(Request $request){
@@ -48,4 +49,21 @@ class AdminsController extends Controller
             return $status;
         }
     }
+
+    public function displayUsers(){
+        $users = User::all();
+        return response()->json([
+            "status" => "Success",
+            "users" => $users
+        ], 200);
+    }
+
+    public function monitorReviews(){
+        $review = Feedback::all();
+        return response()->json([
+            "status" => "Success",
+            "reviews" => $review
+        ], 200);
+    }
+    
 }
