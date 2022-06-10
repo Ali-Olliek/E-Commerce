@@ -5,8 +5,10 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\Admin;
+use App\Http\Controllers\UtilitiesController;
 
-class AdminMiddleware extends Middleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,12 +19,9 @@ class AdminMiddleware extends Middleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = Auth::user();
-        if($user && $user->user_type == 1){
+        $admin = new Admin();
+        if($admin){
             return $next($request);
-        }
-        else if(!$user){
-            return redirect(route("log-in"));
         }
         return redirect(route("not-found"));
     }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\UtilitiesController;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -16,14 +17,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix'=>'v1'], function(){
     Route::group(['prefix'=>'User'], function(){
         Route::group(['middleware' => 'api'], function($router) {
-            Route::POST('/register', [UsersController::class, 'register']);
-            Route::POST('/login', [UsersController::class, 'login'])->name("Log-in");
-            Route::POST('/logout', [UsersController::class, 'logout']);
-            Route::POST('/refresh', [UsersController::class, 'refresh']);
+            Route::POST('/Register', [UsersController::class, 'register']);
+            Route::POST('/Login', [UsersController::class, 'login'])->name("Log-in");
+            Route::POST('/Logout', [UsersController::class, 'logout']);
+            Route::POST('/Refresh', [UsersController::class, 'refresh']);
         });
         Route::group(['middleware' => 'role.user'], function() {            
-            Route::GET('/profile', [UsersController::class, 'profile']); 
-            Route::POST('/feedback', [UsersController::class, 'feedback']);
+            Route::GET('/Profile', [UsersController::class, 'profile']); 
+            Route::POST('/Feedback', [UsersController::class, 'feedback']);
         });
     });
     
@@ -49,5 +50,5 @@ Route::group(['prefix'=>'v1'], function(){
     });
 
     // Utility Routes
-    Route::GET("/not-found", [UtilitiesController::class, "notFound"])->name("not-found");
+    Route::GET("/Not-found", [UtilitiesController::class, "notFound"])->name("not-found");
 });
