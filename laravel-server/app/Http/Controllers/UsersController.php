@@ -119,4 +119,15 @@ class UsersController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
+
+    public function feedback(Request $request){
+        $feedback = new feedback;
+        $feedback ->review = $request-> description;
+        $feedback ->favorite = $request->favorite;
+        $feedback->save();
+
+        return response()->json([
+            "status"=>"success",
+        ], 200);
+    }
 }
