@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->text('image'); // Base64 image
+            $table->foreign('feedback_id')->references('id')->on('feedbacks');
             $table->binary('user_type')->default(0); // Everyone is a User unless stated otherwise.
             $table->rememberToken();
             $table->timestamps();

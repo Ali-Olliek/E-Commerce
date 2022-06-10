@@ -20,7 +20,9 @@ return new class extends Migration
             $table->longText('image')->unsigned();
             $table->integer('price')->unsigned();
             $table->char('location')->unsigned();
-            $table->boolean('in_stock')->unsigned();
+            $table->boolean('in_stock')->unsigned();            
+            $table->foreign('feedback_id')->references('id')->on('feedbacks');            
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('stock_quantity')->unsigned();
             $table->timestamps();
         });
