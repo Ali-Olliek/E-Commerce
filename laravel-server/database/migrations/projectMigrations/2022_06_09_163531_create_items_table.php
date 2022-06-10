@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Database\Migrations\A_2014_10_12_000000_create_users_table;
 
 return new class extends Migration
 {
@@ -11,18 +12,17 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(){
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->char('name');
-            $table->longText('description')->unsigned();
-            $table->longText('image')->unsigned();
-            $table->integer('price')->unsigned();
-            $table->char('location')->unsigned();
-            $table->boolean('in_stock')->unsigned();            
-            $table->foreign('feedback_id')->references('id')->on('feedbacks');            
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->longText('description')->nullabe();
+            $table->longText('image')->nullabe();
+            $table->integer('price')->nullabe();
+            $table->char('location')->nullabe();
+            $table->bigInteger('feedback_id')->nullable();
+            $table->bigInteger('category_id')->nullable();
+            $table->boolean('in_stock')->nullabe();
             $table->integer('stock_quantity')->unsigned();
             $table->timestamps();
         });

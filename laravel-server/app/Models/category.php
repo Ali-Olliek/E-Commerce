@@ -10,7 +10,7 @@ class Category extends Model {
 
     /**Defining Eloquent Model Relationships */
 
-    // Items (N:M)
+    // Items (1:1)
     public function items(){
         return $this->belongsTo(Item::class);
     }

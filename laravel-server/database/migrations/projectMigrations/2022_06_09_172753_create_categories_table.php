@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('feedbacks', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->text('review')->NULL;
-            $table->boolean('favorite')->default(false);
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('item_id')->references('id')->on('items');
+            $table->char('name');
+            $table->bigInteger('item_id')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedbacks');
+        Schema::dropIfExists('categories');
     }
 };
