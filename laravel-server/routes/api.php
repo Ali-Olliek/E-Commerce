@@ -21,7 +21,7 @@ Route::group(['prefix'=>'v1'], function(){
             Route::POST('/logout', [UsersController::class, 'logout']);
             Route::POST('/refresh', [UsersController::class, 'refresh']);
         });
-        Route::group(['middleware' => 'api'], function() {            
+        Route::group(['middleware' => 'role.user'], function() {            
             Route::GET('/profile', [UsersController::class, 'profile']); 
             Route::POST('/feedback', [UsersController::class, 'feedback']);
         });
@@ -30,12 +30,14 @@ Route::group(['prefix'=>'v1'], function(){
     // Admin Routes
     // Admins can upload an item, edit existing item, display existing users (optional), and monitor reviews (optional).
     Route::group(['prefix' => 'Admin'], function(){
-        Route::group(['middleware' => 'role.admin'], function(){
-            Route::POST("/AddItem", [AdminsController::class, "addItem"])->name("Add-item");
-            Route::POST("/EditItem/{id}", [AdminsController::class, "editItem"])->name("Edit-item");
-            Route::GET("/DisplayUsers", [AdminsController::class, "displayUsers"])->name("Display-users");
-            Route::GET("/MonitorReviews", [AdminsController::class, "monitorReviews"])->name("Monitor-reviews");
-        });
+        Route::POST("/Login", [AdminsController::class, "login"])->name("Log-in");
+            Route::group(['middleware' => 'role.admin'], function(){    
+                Route::POST("/CreateAdmin", [AdminsController::class, "register"])->name("Create-admin");
+                Route::POST("/AddItem", [AdminsController::class, "addItem"])->name("Add-item");
+                Route::POST("/EditItem/{id}", [AdminsController::class, "editItem"])->name("Edit-item");
+                Route::GET("/DisplayUsers", [AdminsController::class, "displayUsers"])->name("Display-users");
+                Route::GET("/MonitorReviews", [AdminsController::class, "monitorReviews"])->name("Monitor-reviews");
+            });
     });
 
     // Item Routes

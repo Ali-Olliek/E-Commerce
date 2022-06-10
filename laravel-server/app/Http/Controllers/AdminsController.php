@@ -2,14 +2,51 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Validator;
+
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Feedback;
-
+use App\Models\Admin;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminsController extends Controller
 {
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:2|max:100',
+            'email' => 'required|string|email|max:100|unique:users',
+            'password' => 'required|string|confirmed|min:6',
+        ]);
+
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $admin = Admin::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ]);
+
+        return response()->json([
+            'message' => 'Admin successfully registered',
+            'admin' => $admin
+        ], 201);
+    }
+
+    public function login(Request $request){
+        $admin = Admin::where('email', '=', $request->email)->first();
+        $password = Hash::check('password', $admin->password);
+        //https://stackoverflow.com/a/25136309/18590539
+        return response()->json([
+            "status"=>"success",
+            "user"=>$admin
+        ], 200);
+    }
+
     public function addItem(Request $request){
         $check = Item::where("name","=",$request->name)->get();
         if($check != "[]"){
@@ -19,6 +56,7 @@ class AdminsController extends Controller
             $item = new Item;
             $item -> name = $request -> name;
             $item -> description = $request -> description;
+            $item -> location = $request -> location;
             $item -> image = $request -> image;
             $item -> price = $request -> price;
             $item -> in_stock = $request -> in_stock;
