@@ -157,7 +157,17 @@ header {
     left: 10%;
     top: 10%;
 }
+.favorite {
+    font-size: 60px;
+    position: absolute;
+    right: 10%;
+    top: 0%;
+}
 
+.favorite:hover {
+    transform: scale(1.2);
+    color: red;
+}
 .desc {
     position: absolute;
     left: 10%;
