@@ -135,7 +135,9 @@ header {
 }
 .itemslist {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
     margin: 40px;
 
 }
@@ -160,6 +162,15 @@ header {
     position: absolute;
     left: 10%;
     top: 30%;
+}
+.imagecontainer {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    background-color: #161B40;
+    border-radius: 10px;
+    height: 40%;
+    width: 80%;
 }
 
 .loc {
