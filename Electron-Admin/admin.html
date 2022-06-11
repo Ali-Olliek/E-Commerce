@@ -6,7 +6,7 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <link rel="stylesheet" href="./admin.css">
-    <title>Hello World!</title>
+    <title>Admin App</title>
 </head>
 
 <body>
@@ -20,12 +20,12 @@
                 <button class="action edititem" id="edititem">Edit Existing Item</button>
             </li>
             <li>
-                <button class="action addcat" id="addcat">Add Category</button>
+                <button class="action addcategory" id="addcat">Add Category</button>
             </li>
         </ul>
         <button class="action logout" id="logout">Logout</button>
     </span>
-    <span class="content">
+    <span class="content" id="additem">
         <h1 class="title">Add Item</h1>
         <div>
             <input id="item_name" type="text" placeholder="Item's Name" class="attr name">
@@ -45,6 +45,15 @@
                 <input type="file" id="img" name="img" accept="image/*">
             </form>
         </div>
+        <button class="submit" id="submitadd">Add</button>
+    </span>
+    <span class="content addcat" id="addcat">
+        <h1 class="title">Add a Category</h1>
+        <div>
+            <input id="item_name" type="text" placeholder="Category's Name" class="attr name">
+        </div>
+        <div id="success" class="success">Added Successfully!</div>
+        <div id="failed" class="failed">Failed to Add!</div>
         <button class="submit" id="submitadd">Add</button>
     </span>
 </body>

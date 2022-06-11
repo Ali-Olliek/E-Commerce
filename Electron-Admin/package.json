@@ -1,9 +1,9 @@
 {
   "name": "my-electron-app",
   "version": "1.0.0",
-  "description": "Hello World!",
+  "description": "Admin App",
   "main": "main.js",
-  "author": "Jane Doe",
+  "author": "Ali",
   "license": "MIT",
   
   "scripts": {
