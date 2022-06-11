@@ -1,3 +1,64 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: red;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 50px;
+    width: 33vw;
+    height: 100vh;
+    background-color: #24305E;
+    color: white;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    width: 66%;
+    background-color: #6d6d6d;
+}
+
+.actionlist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.actionlist li {
+    margin-block: 20px;
+}
+.adminname {
+    background-color:#F76C6C ;
+    height: 50px;
+    text-align: center;
+    padding-top:15px;
+    border-radius: 5px;
+}
+
+button {
+    width: 200px;
+    height: 50px;
+    background-color: white;
+}
+
+.attr {
+    height: 50px;
+    width: 50vw;
+    margin-block: 20px;
+    padding: 5px;
+    border: 2px solid #374785;
+}
+
+.submit {
+    margin-top: 50px;
+    background-color: #A8D0E6;
 }
