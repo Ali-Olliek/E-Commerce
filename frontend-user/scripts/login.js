@@ -16,9 +16,11 @@ let login = document.getElementById("login");
         data: data,
     }).then(function (response) {
         if (response.status == 200) {
-        let user_token = response.data.access_token
-        localStorage.setItem("User_token", user_token);
-        window.location.href = "./index.html";
+        let user_token = response.data[0].original.access_token;
+        let user_name = response.data.user;
+        let credentials = [user_name, user_token ];
+        localStorage.setItem("User",JSON.stringify(credentials))
+        window.location.href = "./index.html"
         } else {
             console.log("User Not Found");
         }
