@@ -59,9 +59,17 @@ button {
     height: 50px;
     width: 50vw;
     padding: 5px;
+    margin-block: 20px;
+    background-color: white;
     border: 2px solid #374785;
+    border-radius: 5px;
 }
-
+.category {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
 .submit {
     margin-top: 50px;
     background-color: #A8D0E6;

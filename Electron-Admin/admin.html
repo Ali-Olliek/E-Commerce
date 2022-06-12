@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    
     <link rel="stylesheet" href="./styles/admin.css">
     <title>Admin App</title>
 </head>
@@ -31,15 +31,33 @@
             <input id="item_loc" type="text" placeholder="Item's Location" class="attr loc">
         </div>
         <div>
-            <input id="item_cat" type="text" placeholder="Item's Category" class="attr cat">
+            <form action="category_display" class="attr category">
+                <label for="category">Choose a Category:</label>
+                <br>
+                <select name="category" id="categorylist">
+                    <option value="Clothes">Clothes</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Jewelry">Jewelry</option>
+                    <option value="Electronics">Electronics</option>
+                </select>
+        </div>
+        <div>
+            <input id="item_price" type="text" placeholder="Add Price" class="attr cat">
+        </div>
+        <div>
+            <input id="item_in_stock" type="text" placeholder="In Stock?" class="attr cat">
+        </div>
+        <div>
+            <input id="item_stock_quantity" type="text" placeholder="Stock Quantity" class="attr cat">
         </div>
         <div>
             <form action="/action_page.php">
                 <label for="img"></label>
-                <input type="file" id="img" name="img" accept="image/*">
+                <input type="file" id="image" name="img" accept="image/*">
             </form>
         </div>
-        <button class="submit" id="submitadd">Add</button>
+        <div id="message" class="message"></div>
+        <button class="submit" id="submit-add-item">Add</button>
     </div>
     <div class="content addcat" id="category">
         <h1 class="title">Add a Category</h1>
@@ -47,7 +65,7 @@
             <input id="item_name" type="text" placeholder="Category's Name" class="attr name">
         </div>
         <div id="message" class="message"></div>
-        <button class="submit" id="submitadd">Add</button>
+        <button class="submit" id="submit-add-category">Add</button>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./scripts/admin.js"></script>

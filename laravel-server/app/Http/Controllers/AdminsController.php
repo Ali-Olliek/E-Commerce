@@ -59,7 +59,7 @@ class AdminsController extends Controller {
             $item -> name = $request -> name;
             $item -> description = $request -> description;
             $item -> location = $request -> location;
-            $item -> image = base64_encode(file_get_contents($request->file('image')));;
+            $item -> image = base64_encode(file_get_contents($request->file('image')));
             $item -> price = $request -> price;
             $item -> in_stock = $request -> in_stock;
             $item -> stock_quantity = $request -> stock_quantity;
