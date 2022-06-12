@@ -11,10 +11,10 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AdminsController extends Controller
-{
-    public function register(Request $request)
-    {
+class AdminsController extends Controller {
+
+    // Create Admin
+    public function register(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:2|max:100',
             'email' => 'required|string|email|max:100|unique:users',
@@ -37,6 +37,7 @@ class AdminsController extends Controller
         ], 201);
     }
 
+    // Admin Login
     public function login(Request $request){
         $admin = Admin::where('email', '=', $request->email)->first();
         $password = Hash::check('password', $admin->password);
@@ -46,7 +47,8 @@ class AdminsController extends Controller
             "user"=>$admin
         ], 200);
     }
-
+    
+    //Admin Add Item
     public function addItem(Request $request){
         $check = Item::where("name","=",$request->name)->get();
         if($check != "[]"){
@@ -57,7 +59,7 @@ class AdminsController extends Controller
             $item -> name = $request -> name;
             $item -> description = $request -> description;
             $item -> location = $request -> location;
-            $item -> image = $request -> image;
+            $item -> image = base64_encode(file_get_contents($request->file('image')));;
             $item -> price = $request -> price;
             $item -> in_stock = $request -> in_stock;
             $item -> stock_quantity = $request -> stock_quantity;
@@ -65,9 +67,10 @@ class AdminsController extends Controller
             return response()->json([
                 "status" => "Success",
             ], 200);
-        }
+        }  
     }
-    
+
+    // Admin Edit Existing Item (Optional)
     public function edititem(Request $request, $id){
         $item = Item::find($id);
         if($item){
@@ -88,6 +91,7 @@ class AdminsController extends Controller
         }
     }
 
+    // Admin Display Users (Optional)
     public function displayUsers(){
         $users = User::all();
         return response()->json([
@@ -96,6 +100,7 @@ class AdminsController extends Controller
         ], 200);
     }
 
+    // Admin Check Reviews (Optional)
     public function monitorReviews(){
         $review = Feedback::all();
         return response()->json([
