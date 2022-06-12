@@ -1,32 +1,24 @@
-let register = document.getElementById("register");
-register.addEventListener("click", function (event) {
-  event.preventDefault();
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const confirmpassword = document.getElementById("confirmpassword").value;
+let login = document.getElementById("login");
+    login.addEventListener("hover", function (event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-  let data = new FormData();
-  data.append("name", name);
-  data.append("email", email);
-  data.append("password", password);
-  data.append("password_confirmation", confirmpassword);
+    let data = new FormData();
+    data.append("email", email);
+    data.append("password", password);
 
-  let url = "http://localhost:8000/api/v1/Admin/CreateAdmin";
+    let url = "http://localhost:8000/api/v1/Admin/Login";
 
-  axios({
-    method: "POST",
-    url: url,
-    data: data,
-  }).then(function (response) {
-    console.log(response);
-    try {
-      if (response.data.message === "Admin successfully registered")
-        console.log("Admin successfully registered");
-    } catch (err) {
-      if (response.response.data.message === "SQLSTATE[23000]") {
-        console.log("User Already Registered");
-      }
-    }
-  });
+    axios({
+        method: "POST",
+        url: url,
+        data: data,
+    }).then(function (response) {
+        if (response.data.status === "success") {
+        console.log("Success");
+        } else {
+        console.log("User Not Found");
+        }
+    });
 });
