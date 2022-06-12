@@ -222,9 +222,10 @@ header {
     .categories {
         display: flex;
         flex-direction: column;
+        justify-content: space-evenly;
         width: 100%;
         grid-template-columns: 150px 150px;
         grid-template-rows: 100px 100px;
-        margin-top: 20px;
+        margin-top: -400px;
     }
 }
