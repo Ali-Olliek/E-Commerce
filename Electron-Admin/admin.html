@@ -10,22 +10,16 @@
 </head>
 
 <body>
-    <span class="sidebar" id="sidebar">
+    <div class="sidebar" id="sidebar">
         <div class="adminname" id="admin">Welcome back, Ali</div>
         <ul class="actionlist">
-            <li>
                 <button class="action additem" id="additem">Add Item</button>
-            </li>
-            <li>
                 <button class="action edititem" id="edititem">Edit Existing Item</button>
-            </li>
-            <li>
                 <button class="action addcategory" id="addcat">Add Category</button>
-            </li>
         </ul>
         <button class="action logout" id="logout">Logout</button>
-    </span>
-    <span class="content" id="createitem">
+    </div>
+    <div class="content" id="createitem">
         <h1 class="title">Add Item</h1>
         <div>
             <input id="item_name" type="text" placeholder="Item's Name" class="attr name">
@@ -46,17 +40,16 @@
             </form>
         </div>
         <button class="submit" id="submitadd">Add</button>
-    </span>
-    <span class="content addcat" id="category">
+    </div>
+    <div class="content addcat" id="category">
         <h1 class="title">Add a Category</h1>
         <div>
             <input id="item_name" type="text" placeholder="Category's Name" class="attr name">
         </div>
-        <div id="success" class="success">Added Successfully!</div>
-        <div id="failed" class="failed">Failed to Add!</div>
+        <div id="message" class="message"></div>
         <button class="submit" id="submitadd">Add</button>
-    </span>
+    </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./main.js"></script>
+    <script src="./scripts/admin.js"></script>
 </body>
 </html>
