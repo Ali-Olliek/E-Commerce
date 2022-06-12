@@ -1,5 +1,5 @@
 let login = document.getElementById("login");
-    login.addEventListener("hover", function (event) {
+    login.addEventListener("click", function (event) {
     event.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -16,7 +16,7 @@ let login = document.getElementById("login");
         data: data,
     }).then(function (response) {
         if (response.data.status === "success") {
-        console.log("Success");
+        window.location.href="./admin.html"
         } else {
         console.log("User Not Found");
         }
