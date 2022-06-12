@@ -26,12 +26,12 @@ class UsersController extends Controller {
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(Request $request)
-    {
+    public function register(Request $request) {
+        
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:2|max:100',
             'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|confirmed|min:6',
+            'password' => 'required|string|min:6',
         ]);
 
         if($validator->fails()) {
@@ -55,12 +55,13 @@ class UsersController extends Controller {
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
+        
+        $user = User::where('email', '=', $request->email)->first();
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
@@ -70,7 +71,10 @@ class UsersController extends Controller {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token);
+        return response()->json([
+            $this->respondWithToken($token),
+            'user' => $user
+        ], 200);
     }
 
     /**

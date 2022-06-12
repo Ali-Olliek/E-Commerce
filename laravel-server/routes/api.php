@@ -16,9 +16,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Users can Signup, Sign in, Sign out, refresh their Users token, view profile, and write a feedback (Review and Like)
 Route::group(['prefix'=>'v1'], function(){
     Route::group(['prefix'=>'User'], function(){
+        Route::POST('/Login', [UsersController::class, 'login'])->name("Log-in");
         Route::group(['middleware' => 'api'], function($router) {
             Route::POST('/Register', [UsersController::class, 'register']);
-            Route::POST('/Login', [UsersController::class, 'login'])->name("Log-in");
             Route::POST('/Logout', [UsersController::class, 'logout']);
             Route::POST('/Refresh', [UsersController::class, 'refresh']);
         });
