@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #6b6b6b6b;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    width: 80%;
+    height: 60vh;
+    background-color: #374785;
+    border-radius: 5px;
+    padding: 20px;
+}
+.login h1 {
+    color: white;
+}
+.info {
+    padding: 10px;
+    width: 90%;
+    margin-block: 10px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 45%;
+    height: 40px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+a {
+    color: white;
+}
