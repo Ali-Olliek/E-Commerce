@@ -73,7 +73,7 @@ class UsersController extends Controller {
 
         return response()->json([
             $this->respondWithToken($token),
-            'user' => $user
+            'user' => $user->name
         ], 200);
     }
 
