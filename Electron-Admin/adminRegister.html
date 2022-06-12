@@ -11,7 +11,7 @@
     <div class="login">
         <h1>Admin Register</h1>
         <div class="ele">
-            <input type="text" placeholder="Username" class="info username" id="username">
+            <input type="text" placeholder="Name" class="info username" id="name">
         </div>
         <div class="ele">
             <input type="text" placeholder="Email" class="info email" id="email">
@@ -19,13 +19,16 @@
         <div class="ele">
             <input type="password" placeholder="Password" class="info pass" id="password">
         </div>
-            <button class="btn loginbtn" id="signup">Create Admin</button>
+        <div class="ele">
+            <input type="password" placeholder="Confirm Password" class="info pass" id="confirmpassword">
+        </div>
+            <button class="btn registerbtn" id="register">Create Admin</button>
             <p>Already an Admin?
                 <a href="./adminLogin.html">Log in</a>
             </p>
         </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./main.js"></script>
+    <script src="./scripts/Login.js"></script>
 </body>
 </html>

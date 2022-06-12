@@ -32,8 +32,8 @@ Route::group(['prefix'=>'v1'], function(){
     // Admins can upload an item, and create a new category, edit existing item (Optional), display existing users (optional), and monitor reviews (optional).
     Route::group(['prefix' => 'Admin'], function(){
         Route::POST("/Login", [AdminsController::class, "login"])->name("Log-in");
+        Route::POST("/CreateAdmin", [AdminsController::class, "register"])->name("Create-admin");
             Route::group(['middleware' => 'role.admin'], function(){    
-                Route::POST("/CreateAdmin", [AdminsController::class, "register"])->name("Create-admin");
                 Route::POST("/AddItem", [AdminsController::class, "addItem"])->name("Add-item");
                 Route::POST("/AddCategory", [AdminsController::class, "addCategory"])->name("Add-cat");
                 Route::POST("/EditItem/{id}", [AdminsController::class, "editItem"])->name("Edit-item");
