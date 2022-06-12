@@ -35,6 +35,7 @@ Route::group(['prefix'=>'v1'], function(){
             Route::group(['middleware' => 'role.admin'], function(){    
                 Route::POST("/CreateAdmin", [AdminsController::class, "register"])->name("Create-admin");
                 Route::POST("/AddItem", [AdminsController::class, "addItem"])->name("Add-item");
+                Route::POST("/AddCategory", [AdminsController::class, "addCategory"])->name("Add-cat");
                 Route::POST("/EditItem/{id}", [AdminsController::class, "editItem"])->name("Edit-item");
                 Route::GET("/DisplayUsers", [AdminsController::class, "displayUsers"])->name("Display-users");
                 Route::GET("/MonitorReviews", [AdminsController::class, "monitorReviews"])->name("Monitor-reviews");
