@@ -81,6 +81,7 @@ header {
 header {
     padding: 30vh 15vw;
     height: 100vh;
+    width: 100vw;
 }
 
 .container {
@@ -103,6 +104,7 @@ header {
     
 }
 .landing {
+    font-size: 1.5rem;
     width: 50%;
     height: 100%;
 }
@@ -129,9 +131,9 @@ header {
     font-family: sans-serif
 }
 .cat:hover {
-    transform: scale(1.2);
-    animation-duration: 5s;
-    animation-delay: 2s;
+    background-color: #F40058;
+    transform: scale(1.05);
+    cursor: pointer;
 }
 .itemslist {
     display: flex;
@@ -166,8 +168,10 @@ header {
 
 .favorite:hover {
     transform: scale(1.2);
-    color: red;
+    color:#F40058;
+    cursor: pointer;
 }
+
 .desc {
     position: absolute;
     left: 10%;
@@ -194,16 +198,30 @@ header {
     bottom: 10%;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 600px) {
+    header {
+        height: 120vh;
+        width: 100vw;
+    }
+
     .container {
+        position: absolute;
+        top: 10%;
+        left: 10%;
         font-size: 1rem;
         flex-direction: column;
-        height: 60vh;
+        height: 100vh;
+        width: 80vw;
     }
+
     .landing {
-        width: 100%;
+        width: 90%;
+        font-size: 1rem;
     }
+
     .categories {
+        display: flex;
+        flex-direction: column;
         width: 100%;
         grid-template-columns: 150px 150px;
         grid-template-rows: 100px 100px;
