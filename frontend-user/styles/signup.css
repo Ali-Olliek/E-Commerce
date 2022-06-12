@@ -142,3 +142,18 @@ body {
         height: 20px;
     }
 }
+@media screen and (max-width:1000px) {
+    .container {
+        height: 70vh;
+        width: 60vw;
+    }
+
+    .btn {
+        height: 50px;
+        width: 150px;
+    }
+
+    .info {
+        height: 20px;
+    }
+}
