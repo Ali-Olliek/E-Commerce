@@ -20,13 +20,10 @@ register.addEventListener("click", function (event) {
         data: data,
     }).then(function (response) {
         console.log(response);
-        try {
-        if (response.data.message === "Admin successfully registered")
-            console.log("Admin successfully registered");
-        } catch (err) {
-        if (response.response.data.message === "SQLSTATE[23000]") {
-            console.log("User Already Registered");
+        if (response.data.message === "Admin successfully registered"){
+             window.location.href="./admin.html"
+        }else{
+            failed.style.display = "block";
         }
-        }
-    });
+    })
 });

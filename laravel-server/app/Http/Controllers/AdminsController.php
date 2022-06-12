@@ -44,7 +44,7 @@ class AdminsController extends Controller {
         //https://stackoverflow.com/a/25136309/18590539
         return response()->json([
             "status"=>"success",
-            "user"=>$admin
+            "admin"=>$admin
         ], 200);
     }
     

@@ -16,7 +16,9 @@ let login = document.getElementById("login");
         data: data,
     }).then(function (response) {
         if (response.data.status === "success") {
-        window.location.href="./admin.html"
+        let admin_name = response.data.admin.name;
+        localStorage.setItem("Admin's name", admin_name);
+        window.location.href="./admin.html";
         } else {
         console.log("User Not Found");
         }
