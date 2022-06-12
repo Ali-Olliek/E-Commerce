@@ -14,7 +14,7 @@ class Item extends Model {
         return $this->hasMany(Feedback::class);
     }
 
-    // Categories (M:N)
+    // Categories (1:1)
     public function categories(){
         return $this->hasOne(Category::class);
     }

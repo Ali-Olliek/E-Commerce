@@ -21,6 +21,6 @@ class UsersMiddleware
         if($user){
             return $next($request);
         }
-        return redirect(route("log-in"));
+        return redirect(route("Log-in"));
     }
 }

@@ -29,7 +29,7 @@ Route::group(['prefix'=>'v1'], function(){
     });
     
     // Admin Routes
-    // Admins can upload an item, edit existing item, display existing users (optional), and monitor reviews (optional).
+    // Admins can upload an item, and create a new category, edit existing item (Optional), display existing users (optional), and monitor reviews (optional).
     Route::group(['prefix' => 'Admin'], function(){
         Route::POST("/Login", [AdminsController::class, "login"])->name("Log-in");
             Route::group(['middleware' => 'role.admin'], function(){    

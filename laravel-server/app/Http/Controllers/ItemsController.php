@@ -7,8 +7,9 @@ use App\Models\Item;
 use App\Models\User;
 use App\Models\Feedback;
 
-class ItemsController extends Controller
-{
+class ItemsController extends Controller {
+
+    // Display Items on Landing Page
     public function displayAll(){
         $items = Item::all();
         return response()->json([
@@ -17,7 +18,7 @@ class ItemsController extends Controller
         ], 200);
     }
 
-
+    // Display a Single Item (Optional)
     public function displayItem($name){
         $item = Item::where("name", "LIKE", "%$name%")->get();
     
@@ -27,6 +28,7 @@ class ItemsController extends Controller
         ], 200);
     }
 
+    // Display Items within a Category
     public function displayCat($category){
         $item = Item::where("category","LIKE", "%$category%")->get();
         
