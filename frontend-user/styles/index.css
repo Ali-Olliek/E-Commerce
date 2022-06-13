@@ -229,3 +229,34 @@ header {
         margin-top: -400px;
     }
 }
+@media screen and (max-width: 1000px) {
+    header {
+        height: 120vh;
+        width: 100vw;
+    }
+
+    .container {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        font-size: 1rem;
+        flex-direction: column;
+        height: 105vh;
+        width: 80vw;
+    }
+
+    .landing {
+        width: 90%;
+        font-size: 1rem;
+        margin-bottom: 50px;
+    }
+
+    .categories {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        grid-template-columns: 150px 150px;
+        grid-template-rows: 100px 100px;
+        margin-top: -200px;
+    }
+}
