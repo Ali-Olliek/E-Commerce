@@ -116,3 +116,8 @@ add_item.addEventListener("click", function(event){
       }
     })
   })
+
+let admin_name = document.getElementById("admin");
+let admin_name_localstorage = localStorage.getItem("Admin's name");
+
+admin_name.innerText = "Welcome" + admin_name_localstorage;
