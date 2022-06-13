@@ -60,7 +60,9 @@ class AdminsController extends Controller {
             $item -> name = $request -> name;
             $item -> description = $request -> description;
             $item -> location = $request -> location;
+            $item -> category = $request -> category;
             $item -> price = $request -> price;
+            $item -> image = $request -> image;
             $item -> in_stock = $request -> in_stock;
             $item -> stock_quantity = $request -> stock_quantity;
             $item->save();

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('image')->nullabe();
             $table->integer('price')->nullabe();
             $table->char('location')->nullabe();
+            $table->char('category')->nullable();
             $table->bigInteger('feedback_id')->nullable();
             $table->bigInteger('category_id')->nullable();
             $table->boolean('in_stock')->nullabe();
