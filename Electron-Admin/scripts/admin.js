@@ -37,7 +37,7 @@ function imageUploaded() {
 
   reader.onload = function () {
     base64String = reader.result;
-    base64String = `<img src="` + base64String + `">`;
+    base64String = `` + base64String + ``;
   };
 
   reader.readAsDataURL(file);
@@ -54,7 +54,7 @@ add_item.addEventListener("click", function(event){
   let item_price = document.getElementById("item_price").value;
   let in_stock = document.getElementById("item_in_stock").value;
   let item_stock_quantity = document.getElementById("item_stock_quantity").value;
-  let image = imageUploaded();
+  imageUploaded();
 
   let data = new FormData();
   data.append("name", name);
