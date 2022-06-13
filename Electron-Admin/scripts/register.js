@@ -23,7 +23,15 @@ register.addEventListener("click", function (event) {
         if (response.data.message === "Admin successfully registered"){
              window.location.href="./admin.html"
         }else{
-            failed.style.display = "block";
+            let parent = document.getElementById("login");
+            let message = document.createElement("div");
+            message.classList.add("message");
+            message.classList.add("success");
+            message.innerText = "Couldn't Create Admin";
+            parent.append(message);
+            setTimeout(() => {
+              message.style.display = "none";
+            }, 2000);
         }
     })
 });

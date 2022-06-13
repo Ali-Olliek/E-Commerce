@@ -20,7 +20,15 @@ let login = document.getElementById("login");
         localStorage.setItem("Admin's name", admin_name);
         window.location.href="./admin.html";
         } else {
-        console.log("User Not Found");
+        let parent = document.getElementById("wrapper");
+        let message = document.createElement("div");
+        message.classList.add("message");
+        message.classList.add("failed");
+        message.innerText = "User Not Found";
+        parent.append(message);
+        setTimeout(() => {
+          message.style.display = "none";
+        }, 2000);;
         }
     });
 });

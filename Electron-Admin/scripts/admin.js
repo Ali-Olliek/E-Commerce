@@ -81,41 +81,39 @@ add_item.addEventListener("click", function(event){
   })
 
 
-  add_category.addEventListener("click", function(){
-    let category_name = document.getElementById("category_name").value;
-    let url = "http://localhost:8000/api/v1/Admin/AddCategory";
-    let data = new FormData();
-      data.append("name", category_name)
-    axios({
-      method: "POST",
-      data: data,
-      url: url,
-    }).then(function (response) {
-      if (response.data.status === "Success") {
-        console.log('succ')
-        let parent = document.getElementById("wrapper");
-        let message = document.createElement("div");
-        message.classList.add("message");
-        message.classList.add("success");
-        message.innerText = "Item Added Successfully";
-        parent.append(message);
-        setTimeout(() => {
-          message.style.display = "none";
-        }, 2000);
-      } else {
-        console.log('fail')
-        let parent = document.getElementById("wrapper");
-        let message = document.createElement("div");
-        message.classList.add("message");
-        message.classList.add("failed");
-        message.innerText = "Failed to Add Item";
-        parent.append(message);
-        setTimeout(() => {
-          message.style.display = "none";
-        }, 2000);
-      }
-    })
+add_category.addEventListener("click", function(){
+  let category_name = document.getElementById("category_name").value;
+  let url = "http://localhost:8000/api/v1/Admin/AddCategory";
+  let data = new FormData();
+    data.append("name", category_name)
+  axios({
+    method: "POST",
+    data: data,
+    url: url,
+  }).then(function (response) {
+    if (response.data.status === "Success") {
+      let parent = document.getElementById("wrapper");
+      let message = document.createElement("div");
+      message.classList.add("message");
+      message.classList.add("success");
+      message.innerText = "Item Added Successfully";
+      parent.append(message);
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 2000);
+    } else {
+      let parent = document.getElementById("wrapper");
+      let message = document.createElement("div");
+      message.classList.add("message");
+      message.classList.add("failed");
+      message.innerText = "Failed to Add Item";
+      parent.append(message);
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 2000);
+    }
   })
+})
 
 let admin_name = document.getElementById("admin");
 let admin_name_localstorage = localStorage.getItem("Admin's name");

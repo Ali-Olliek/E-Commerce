@@ -42,3 +42,20 @@ body {
 a {
     color: white;
 }
+
+.message {
+    margin-top: 20px;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    padding-top: 15px;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: lightgreen;
+}
+
+.failed {
+    background-color: #F76C6C;
+}
