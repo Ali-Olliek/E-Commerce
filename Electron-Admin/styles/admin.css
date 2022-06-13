@@ -16,7 +16,7 @@ body {
     align-items: center;
     padding: 50px;
     width: 33vw;
-    height: 120vh;
+    height: 150vh;
     background-color: #24305E;
     color: white;
 }
@@ -26,7 +26,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     padding: 50px;
-    height: 120vh;
+    height: 150vh;
     width: 66%;
     background-color: #6d6d6d;
 }
@@ -90,8 +90,7 @@ button {
 }
 
 .message {
-    position: absolute;
-    top: 250px;
+    margin-top: 20px;
     height: 50px;
     width: 200px;
     text-align: center;
@@ -105,4 +104,16 @@ button {
 
 .failed {
     background-color: #F76C6C;
+}
+
+@media (min-width: 800){
+    .sidebar {
+        height: fit-content;
+        background-color: red;
+    }
+
+    .content {
+        height: fit-content;
+        background-color: red;
+    }
 }

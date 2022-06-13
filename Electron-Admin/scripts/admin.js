@@ -33,10 +33,9 @@ add_item.addEventListener("click", function(event){
     let description = document.getElementById("item_desc").value;
     let location = document.getElementById("item_loc").value;
     let category = document.getElementById("categorylist").value;
-    let item_price = document.getElementById("item_price");
+    let item_price = document.getElementById("item_price").value;
     let in_stock = document.getElementById("item_in_stock").value;
     let item_stock_quantity = document.getElementById("item_stock_quantity").value;
-    let image = document.getElementById("image").value;
 
     let data = new FormData();
       data.append("name", name);
@@ -46,7 +45,6 @@ add_item.addEventListener("click", function(event){
       data.append("price", item_price);
       data.append("item_stock_quantity", item_stock_quantity); 
       data.append("in_stock", in_stock); 
-      data.append("image", image);
 
     let url = "http://localhost:8000/api/v1/Admin/AddItem";
 
@@ -58,16 +56,28 @@ add_item.addEventListener("click", function(event){
         'Content-Type': 'form-data'
       }
     }).then(function(response){
-      if(response.data.status === "success"){
-        console.log("succes", response);
-        message.innerHTML = "Item Added Successfully"
-        message.classList.add = "succes";
-        message.style.display = "block";
+      console.log(response)
+      if(response.data.status === 
+        "Success"){
+          let parent = document.getElementById("createitem");
+          let message = document.createElement("div");
+          message.classList.add("message");
+          message.classList.add("success");
+          message.innerText = "Item Added Successfully";
+          parent.append(message);
+          setTimeout(() => {
+            message.style.display = "none";
+          }, 2000);
       }else{
-        console.log("failed", response);
-        message.innerHTML = "Failed To Add Item"
-        message.classList.add = "failed";
-        message.style.display = "block";
+        let parent = document.getElementById("createitem");
+        let message = document.createElement("div");
+        message.classList.add("message");
+        message.classList.add("failed");
+        message.innerText = "Failed to Add Item";
+        parent.append(message);
+        setTimeout(() => {
+          message.style.display = "none";
+        }, 2000);
       }
     })
   })
