@@ -6,6 +6,7 @@ use Validator;
 
 use App\Models\Item;
 use App\Models\User;
+use App\Models\Category;
 use App\Models\Feedback;
 use App\Models\Admin;
 use Illuminate\Http\Request;
@@ -68,6 +69,21 @@ class AdminsController extends Controller {
             ], 200);
         }  
     }
+    // Admin Add a Category
+    public function addCategory(Request $request){
+        $check = Category::where("name","=",$request->name)->get();
+        if($check != "[]"){
+            $status = "Failed";
+            return $status;
+        }else{
+            $category = new Category;
+            $category -> name = $request -> name;
+            $category->save();
+            return response()->json([
+                "status" => "Success",
+            ], 200);
+        }
+    }   
 
     // Admin Edit Existing Item (Optional)
     public function edititem(Request $request, $id){
