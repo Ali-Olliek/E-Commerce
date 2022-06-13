@@ -37,7 +37,7 @@ function imageUploaded() {
 
   reader.onload = function () {
     base64String = reader.result;
-    base64String = `<img src="` + base64String + `">`;
+    base64String = `` + base64String + ``;
   };
 
   reader.readAsDataURL(file);

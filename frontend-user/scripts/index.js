@@ -17,7 +17,7 @@ window.addEventListener('load', (event) => {
     //Create Elements
     let name = document.createElement("h2");
     let price = document.createElement("p");
-    let image = document.createElement("div");
+    let image = document.createElement("img");
     let location = document.createElement("p");
     let favorite = document.createElement("p");
     let itemcard = document.createElement("div");
@@ -37,6 +37,7 @@ window.addEventListener('load', (event) => {
     price.innerText = items_list[0][i]["price"] + "$"
     location.innerText = items_list[0][i]["location"]
     description.innerText = items_list[0][i]["description"]
+    image.src = items_list[0][i].image
     favorite.innerText = "❤";
 
     // Append to list
