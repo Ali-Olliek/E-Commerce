@@ -186,6 +186,10 @@ header {
     height: 40%;
     width: 80%;
 }
+.imagecontainer:hover {
+    height: 45%;
+    bottom: 18%;
+}
 
 .loc {
     position: absolute;
