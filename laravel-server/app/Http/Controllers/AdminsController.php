@@ -23,7 +23,7 @@ class AdminsController extends Controller {
         ]);
 
         if($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return response()->JSON($validator->errors(), 400);
         }
 
         $admin = Admin::create([
@@ -32,7 +32,7 @@ class AdminsController extends Controller {
                 'password' => Hash::make($request->password)
             ]);
 
-        return response()->json([
+        return response()->JSON([
             'message' => 'Admin successfully registered',
             'admin' => $admin
         ], 201);
@@ -43,7 +43,7 @@ class AdminsController extends Controller {
         $admin = Admin::where('email', '=', $request->email)->first();
         $password = Hash::check('password', $admin->password);
         //https://stackoverflow.com/a/25136309/18590539
-        return response()->json([
+        return response()->JSON([
             "status"=>"success",
             "admin"=>$admin
         ], 200);
@@ -66,7 +66,7 @@ class AdminsController extends Controller {
             $item -> in_stock = $request -> in_stock;
             $item -> stock_quantity = $request -> stock_quantity;
             $item->save();
-            return response()->json([
+            return response()->JSON([
                 "status" => "Success",
             ], 200);
         }  
@@ -80,8 +80,9 @@ class AdminsController extends Controller {
         }else{
             $category = new Category;
             $category -> name = $request -> name;
+            $category -> image = $request -> image;
             $category->save();
-            return response()->json([
+            return response()->JSON([
                 "status" => "Success",
             ], 200);
         }
@@ -111,7 +112,7 @@ class AdminsController extends Controller {
     // Admin Display Users (Optional)
     public function displayUsers(){
         $users = User::all();
-        return response()->json([
+        return response()->JSON([
             "status" => "Success",
             "users" => $users
         ], 200);
@@ -120,7 +121,7 @@ class AdminsController extends Controller {
     // Admin Check Reviews (Optional)
     public function monitorReviews(){
         $review = Feedback::all();
-        return response()->json([
+        return response()->JSON([
             "status" => "Success",
             "reviews" => $review
         ], 200);
