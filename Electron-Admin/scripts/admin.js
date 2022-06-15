@@ -26,6 +26,12 @@ add_category_btn.addEventListener("click", function () {
   add_category_page.style.display = "block";
 });
 
+let category_image = "";
+let item_image = "";
+
+document.querySelector("#itemImageId").addEventListener("change", readFile);
+document.querySelector("#catImageId").addEventListener("change", readFile2);
+
 // Image Upload
 function readFile() {
   if (!this.files || !this.files[0]) return;
@@ -33,27 +39,26 @@ function readFile() {
   const FR = new FileReader();
 
   FR.addEventListener("load", function (evt) {
-    document.querySelector("#img").src = evt.target.result;
-    document.querySelector("#b64").textContent = evt.target.result;
+    item_image = evt.target.result;
   });
 
   FR.readAsDataURL(this.files[0]);
 }
+
 function readFile2() {
   if (!this.files || !this.files[0]) return;
 
   const FR = new FileReader();
 
   FR.addEventListener("load", function (evt) {
-    document.querySelector("#img2").src = evt.target.result;
-    document.querySelector("#b642").textContent = evt.target.result;
+    category_image = evt.target.result;
   });
-
+  
   FR.readAsDataURL(this.files[0]);
 }
 
-document.querySelector("#itemImageId").addEventListener("change", readFile);
-document.querySelector("#catImageId").addEventListener("change", readFile2);
+
+
 
 // Send Request to Add an Item
 add_item.addEventListener("click", function (event) {
@@ -72,7 +77,7 @@ add_item.addEventListener("click", function (event) {
   data.append("category", category);
   data.append("location", location);
   data.append("in_stock", in_stock);
-  data.append("image", base64String);
+  data.append("image", item_image);
   data.append("description", description);
   data.append("item_stock_quantity", item_stock_quantity);
 
@@ -118,7 +123,7 @@ add_category.addEventListener("click", function (e) {
     let data = new FormData();
 
     data.append("name", category_name);
-    data.append("image", base64String);
+    data.append("image", category_image);
 
     axios({
         method: "POST",
