@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    
+
     <link rel="stylesheet" href="./styles/admin.css">
     <title>Admin App</title>
 </head>
@@ -13,9 +13,9 @@
     <div class="sidebar" id="sidebar">
         <div class="adminname" id="admin">Welcome back, Ali</div>
         <ul class="actionlist">
-                <button class="action additem" id="additem">Add Item</button>
-                <button class="action edititem" id="edititem">Edit Existing Item</button>
-                <button class="action addcategory" id="addcat">Add Category</button>
+            <button class="action additem" id="additem">Add Item</button>
+            <button class="action edititem" id="edititem">Edit Existing Item</button>
+            <button class="action addcategory" id="addcat">Add Category</button>
         </ul>
         <button class="action logout" id="logout">Logout</button>
     </div>
@@ -31,7 +31,7 @@
             <input id="item_loc" type="text" placeholder="Item's Location" class="attr loc">
         </div>
         <div>
-            <form action="category_display" class="attr category">
+            <form class="attr category">
                 <label for="category">Choose a Category:</label>
                 <br>
                 <select name="category" id="categorylist">
@@ -50,26 +50,27 @@
         <div>
             <input id="item_stock_quantity" type="text" placeholder="Stock Quantity" class="attr cat">
         </div>
-        <div class="uploaddpic">
             <div>
-                <div><label for="fileId"></label></div>
-                <div><input type="file" name="photo" id="fileId"></div>
-                <div class="upload" id="upload"></div>
-                    <div id="display"></div>
+                <input id="itemImageId" type="file">
+                <p id="b64"></p>
+                <img id="img" height="150">
             </div>
-        </div>
         <button class="submit" id="submit-add-item">Add</button>
     </div>
     <div class="content addcat" id="category">
         <h1 class="title">Add a Category</h1>
         <div class="wrapper" id="wrapper">
-        <div>
-            <input id="category_name" type="text" placeholder="Category's Name" class="attr name">
-        </div>
+            <div>
+                <input id="category_name" type="text" placeholder="Category's Name" class="attr name">
+            </div>
+                <input id="catImageId" type="file">
+                <p id="b642"></p>
+                <img id="img2" height="150">
             <button class="submit" id="submit-add-category">Add</button>
         </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./scripts/admin.js"></script>
 </body>
+
 </html>

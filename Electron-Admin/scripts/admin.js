@@ -27,44 +27,54 @@ add_category_btn.addEventListener("click", function () {
 });
 
 // Image Upload
-let base64String = "";
+function readFile() {
+  if (!this.files || !this.files[0]) return;
 
-function imageUploaded() {
+  const FR = new FileReader();
 
-  var file = document.querySelector("input[type=file]")["files"][0];
+  FR.addEventListener("load", function (evt) {
+    document.querySelector("#img").src = evt.target.result;
+    document.querySelector("#b64").textContent = evt.target.result;
+  });
 
-  var reader = new FileReader();
+  FR.readAsDataURL(this.files[0]);
+}
+function readFile2() {
+  if (!this.files || !this.files[0]) return;
 
-  reader.onload = function () {
-    base64String = reader.result;
-    base64String = `` + base64String + ``;
-  };
+  const FR = new FileReader();
 
-  reader.readAsDataURL(file);
+  FR.addEventListener("load", function (evt) {
+    document.querySelector("#img2").src = evt.target.result;
+    document.querySelector("#b642").textContent = evt.target.result;
+  });
+
+  FR.readAsDataURL(this.files[0]);
 }
 
+document.querySelector("#itemImageId").addEventListener("change", readFile);
+document.querySelector("#catImageId").addEventListener("change", readFile2);
+
 // Send Request to Add an Item
-add_item.addEventListener("click", function(event){
+add_item.addEventListener("click", function (event) {
   event.preventDefault();
-  
   let name = document.getElementById("item_name").value;
-  let description = document.getElementById("item_desc").value;
   let location = document.getElementById("item_loc").value;
   let category = document.getElementById("categorylist").value;
   let item_price = document.getElementById("item_price").value;
+  let description = document.getElementById("item_desc").value;
   let in_stock = document.getElementById("item_in_stock").value;
   let item_stock_quantity = document.getElementById("item_stock_quantity").value;
-  imageUploaded();
 
   let data = new FormData();
   data.append("name", name);
-  data.append("description", description);
-  data.append("location", location);
-  data.append("category", category);
   data.append("price", item_price);
-  data.append("image", base64String);
-  data.append("item_stock_quantity", item_stock_quantity);
+  data.append("category", category);
+  data.append("location", location);
   data.append("in_stock", in_stock);
+  data.append("image", base64String);
+  data.append("description", description);
+  data.append("item_stock_quantity", item_stock_quantity);
 
   let url = "http://localhost:8000/api/v1/Admin/AddItem";
 
@@ -98,44 +108,36 @@ add_item.addEventListener("click", function(event){
       }, 2000);
     }
   });
-})
+});
 
+add_category.addEventListener("click", function (e) {
+    e.preventDefault();
+    let category_name = document.getElementById("category_name").value;
+    let url = "http://localhost:8000/api/v1/Admin/AddCategory";
 
-add_category.addEventListener("click", function(){
-  let category_name = document.getElementById("category_name").value;
-  let url = "http://localhost:8000/api/v1/Admin/AddCategory";
-  let data = new FormData();
-    data.append("name", category_name)
-  axios({
-    method: "POST",
-    data: data,
-    url: url,
-  }).then(function (response) {
-    if (response.data.status === "Success") {
-      let parent = document.getElementById("wrapper");
-      let message = document.createElement("div");
-      message.classList.add("message");
-      message.classList.add("success");
-      message.innerText = "Item Added Successfully";
-      parent.append(message);
-      setTimeout(() => {
-        message.style.display = "none";
-      }, 2000);
-    } else {
-      let parent = document.getElementById("wrapper");
-      let message = document.createElement("div");
-      message.classList.add("message");
-      message.classList.add("failed");
-      message.innerText = "Failed to Add Item";
-      parent.append(message);
-      setTimeout(() => {
-        message.style.display = "none";
-      }, 2000);
-    }
-  })
-})
+    let data = new FormData();
+
+    data.append("name", category_name);
+    data.append("image", base64String);
+
+    axios({
+        method: "POST",
+        data: data,
+        url: url,
+        headers: {
+          "Content-Type": "form-data",
+        },
+    }).then(function (response) {
+        if (response.data.status === "Success") {
+          console.log("success");
+        } else {
+          console.log("Failed");
+        }
+    });
+});
+
 
 let admin_name = document.getElementById("admin");
 let admin_name_localstorage = localStorage.getItem("Admin's name");
 
-admin_name.innerText = "Welcome" + admin_name_localstorage;
+admin_name.innerText = "Welcome, " + admin_name_localstorage;
