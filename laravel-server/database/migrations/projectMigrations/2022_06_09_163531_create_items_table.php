@@ -16,15 +16,15 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->char('name');
-            $table->longText('description')->nullabe();
-            $table->longText('image')->nullabe();
-            $table->integer('price')->nullabe();
-            $table->char('location')->nullabe();
+            $table->longText('description')->nullable();
+            $table->longText('image')->nullable();
+            $table->integer('price')->nullable();
+            $table->char('location')->nullable();
             $table->char('category')->nullable();
             $table->bigInteger('feedback_id')->nullable();
             $table->bigInteger('category_id')->nullable();
-            $table->boolean('in_stock')->nullabe();
-            $table->integer('stock_quantity')->unsigned();
+            $table->boolean('in_stock')->nullable();
+            $table->integer('stock_quantity')->nullable();
             $table->timestamps();
         });
     }

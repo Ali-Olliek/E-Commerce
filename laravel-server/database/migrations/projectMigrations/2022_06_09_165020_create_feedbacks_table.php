@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->text('review')->nullabe();
+            $table->text('review')->nullable();
             $table->boolean('favorite')->default(false);
             $table->bigInteger('users_id')->nullable();
             $table->timestamps();
