@@ -8,7 +8,6 @@ window.addEventListener('load', (event) => {
       'Authorization': 'Bearer' + localStorage.getItem('user_token')
     })
   }).then(function (response) {
-    console.log("Hey")
     let items = response.data.Items;
     items_list.push(items);
   let parent = document.getElementById("itemslist");
