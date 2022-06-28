@@ -19,11 +19,13 @@ let register = document.getElementById("signup");
         url: url,
         data: data,
     }).then(function (response) {
-        console.log(response);
+
         if (response.data.message === "User successfully registered") {
-            window.location.href = "./login.html"
+
+          window.location.href = "./login.html";
         } else {
-            failed.style.display = "block";
+
+          failed.style.display = "block";
         }
     });
 });
