@@ -17,8 +17,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix'=>'v1'], function(){
     Route::group(['prefix'=>'User'], function(){
         Route::POST('/Login', [UsersController::class, 'login'])->name("Log-in");
+        Route::POST('/Register', [UsersController::class, 'register']);
         Route::group(['middleware' => 'api'], function($router) {
-            Route::POST('/Register', [UsersController::class, 'register']);
             Route::POST('/Logout', [UsersController::class, 'logout']);
             Route::POST('/Refresh', [UsersController::class, 'refresh']);
         });
@@ -33,7 +33,7 @@ Route::group(['prefix'=>'v1'], function(){
     Route::group(['prefix' => 'Admin'], function(){
         Route::POST("/Login", [AdminsController::class, "login"])->name("Log-in");
         Route::POST("/CreateAdmin", [AdminsController::class, "register"])->name("Create-admin");
-            Route::group(['middleware' => 'role.admin'], function(){    
+            Route::group(['middleware' => 'role.admin'], function(){
                 Route::POST("/AddItem", [AdminsController::class, "addItem"])->name("Add-item");
                 Route::POST("/AddCategory", [AdminsController::class, "addCategory"])->name("Add-cat");
                 Route::POST("/EditItem/{id}", [AdminsController::class, "editItem"])->name("Edit-item");
