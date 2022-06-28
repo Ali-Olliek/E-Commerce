@@ -11,8 +11,9 @@ window.addEventListener('load', (event) => {
     let items = response.data.Items;
     items_list.push(items);
   let parent = document.getElementById("itemslist");
-  console.log(items_list[0])
+  
   for(let i = 0; i<items_list[0].length;i++){
+
     //Create Elements
     let name = document.createElement("h2");
     let price = document.createElement("p");
