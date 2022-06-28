@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('review')->nullable();
             $table->boolean('favorite')->default(false);
             $table->bigInteger('users_id')->nullable();
+            $table->bigInteger('items_id')->nullable();
             $table->timestamps();
         });
     }

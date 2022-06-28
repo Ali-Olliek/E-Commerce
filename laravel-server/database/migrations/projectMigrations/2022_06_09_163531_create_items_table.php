@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->char('location')->nullable();
             $table->char('category')->nullable();
-            $table->bigInteger('feedback_id')->nullable();
             $table->bigInteger('category_id')->nullable();
             $table->boolean('in_stock')->nullable();
             $table->integer('stock_quantity')->nullable();

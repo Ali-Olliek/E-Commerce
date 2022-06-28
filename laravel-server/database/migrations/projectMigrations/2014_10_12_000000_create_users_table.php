@@ -17,8 +17,7 @@ return new class extends Migration{
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->text('image')->nullabe(); // Base64 image
-            $table->bigInteger('feedback_id')->nullable();
+            $table->text('image')->nullable(); // Base64 image
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();            
             $table->timestamps();
